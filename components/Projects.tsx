@@ -12,7 +12,8 @@ const projects = [
     tech: ["Nuxt.js", "Vue.js", "TypeScript", "Tailwind", "Vuetify"],
     color: "from-blue-500 to-cyan-500",
     icon: "🚗",
-    liveUrl: "https://vehicle-rental-iota.vercel.app"
+    liveUrl: "https://vehicle-rental-iota.vercel.app",
+    githubUrl: null
   },
   {
     title: "Winona",
@@ -29,7 +30,8 @@ const projects = [
     ],
     color: "from-purple-500 to-pink-500",
     icon: "💊",
-    liveUrl: "https://bywinona.com"
+    liveUrl: "https://bywinona.com",
+    githubUrl: null
   },
   {
     title: "UAU Fatherhood Matters",
@@ -38,7 +40,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],
     color: "from-orange-500 to-red-500",
     icon: "👨‍👧‍👦",
-    liveUrl: "https://uaufatherhoodmatters.com/"
+    liveUrl: "https://uaufatherhoodmatters.com/",
+    githubUrl: null
   }
 ];
 
