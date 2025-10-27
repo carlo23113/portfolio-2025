@@ -37,7 +37,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50" />
                 <div className="relative bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
                   <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    Hello! I'm{" "}
+                    Hello! I&apos;m{" "}
                     <span className="text-white font-semibold">
                       Jan Carlo Espiritu
                     </span>
