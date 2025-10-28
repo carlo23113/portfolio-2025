@@ -78,7 +78,14 @@ export default function About() {
                       whileHover={{ scale: 1.5 }}
                     />
                     {text.split(" ").map((word, wordIdx) => {
-                      const highlightWords = ["Jan", "Carlo", "Espiritu,", "Vue.js,", "Nuxt.js,", "TypeScript,"];
+                      const highlightWords = [
+                        "Jan",
+                        "Carlo",
+                        "Espiritu,",
+                        "Vue.js,",
+                        "Nuxt.js,",
+                        "TypeScript,"
+                      ];
                       const isHighlight = highlightWords.includes(word);
                       return (
                         <motion.span
@@ -115,7 +122,7 @@ export default function About() {
                 },
                 {
                   num: "02",
-                  title: "Backend Knowledge",
+                  title: "Backend Development",
                   desc: "Understanding of PHP, Laravel, databases, APIs, and server-side architecture"
                 },
                 {
