@@ -1,0 +1,55 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="157.5" x2="1200" y2="157.5" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5" stroke="white" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="150" cy="100" r="80" fill="white" opacity="0.05"/>
+  <circle cx="1050" cy="530" r="100" fill="white" opacity="0.05"/>
+
+  <!-- Content -->
+  <text x="600" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">
+    Jan Carlo Espiritu
+  </text>
+
+  <text x="600" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="300" fill="#999999" text-anchor="middle" letter-spacing="6">
+    SENIOR FRONTEND DEVELOPER
+  </text>
+
+  <line x1="400" y1="330" x2="800" y2="330" stroke="white" stroke-width="2" opacity="0.3"/>
+
+  <!-- Skills -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="white" font-weight="300">
+    <text x="250" y="420" text-anchor="middle">Vue.js</text>
+    <text x="400" y="420" text-anchor="middle">Nuxt.js</text>
+    <text x="550" y="420" text-anchor="middle">TypeScript</text>
+    <text x="700" y="420" text-anchor="middle">React</text>
+    <text x="850" y="420" text-anchor="middle">Next.js</text>
+    <text x="1000" y="420" text-anchor="middle">Tailwind</text>
+  </g>
+
+  <!-- Website -->
+  <text x="600" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#666666" text-anchor="middle">
+    www.jancarloespiritu.com
+  </text>
+
+  <!-- Computer emoji -->
+  <text x="950" y="180" font-size="80">💻</text>
+</svg>
