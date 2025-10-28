@@ -35,11 +35,11 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110"
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 border border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
           aria-label="Scroll to top"
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ export default function ScrollToTop() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={1.5}
               d="M5 10l7-7m0 0l7 7m-7-7v18"
             />
           </svg>

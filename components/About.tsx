@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -8,11 +8,24 @@ export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center py-20 relative"
+      className="min-h-screen flex items-center py-32 relative bg-black overflow-hidden"
     >
+      {/* Parallax background element */}
+      <motion.div
+        style={{ y }}
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-white opacity-[0.02] rounded-full blur-3xl"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
           ref={ref}
@@ -20,45 +33,71 @@ export default function About() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            About{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              Me
-            </span>
-          </h2>
+          <div className="mb-20">
+            <div className="text-sm tracking-[0.3em] uppercase text-gray-600 font-light mb-4">
+              About Me
+            </div>
+            <h2 className="text-5xl md:text-7xl font-bold text-white">
+              Who I Am
+            </h2>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ delay: 0.2, duration: 0.8 }}
+              className="relative"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50" />
-                <div className="relative bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    Hello! I&apos;m{" "}
-                    <span className="text-white font-semibold">
-                      Jan Carlo Espiritu
-                    </span>
-                    , a Senior Frontend Web Developer with a strong foundation
-                    in creating beautiful, performant, and user-friendly web
-                    applications.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    I specialize in modern frontend technologies like{" "}
-                    <span className="text-blue-400">Vue.js</span>,
-                    <span className="text-purple-400"> Nuxt.js</span>, and{" "}
-                    <span className="text-cyan-400">TypeScript</span>, while
-                    also having comprehensive knowledge of backend development
-                    and full-stack architectures.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    My goal is to bridge the gap between design and
-                    functionality, creating seamless digital experiences that
-                    users love and businesses value.
-                  </p>
-                </div>
+              {/* Decorative element */}
+              <motion.div
+                className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-white via-gray-500 to-transparent"
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                transition={{ delay: 0.4, duration: 1 }}
+                style={{ transformOrigin: "top" }}
+              />
+
+              <div className="relative pl-8 space-y-6">
+                {[
+                  "Hello! I'm Jan Carlo Espiritu, a Senior Frontend Web Developer with a strong foundation in creating beautiful, performant, and user-friendly web applications.",
+                  "I specialize in modern frontend technologies like Vue.js, Nuxt.js, and TypeScript, while also having comprehensive knowledge of backend development and full-stack architectures.",
+                  "My goal is to bridge the gap between design and functionality, creating seamless digital experiences that users love and businesses value."
+                ].map((text, idx) => (
+                  <motion.p
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={
+                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
+                    transition={{ delay: 0.4 + idx * 0.1, duration: 0.6 }}
+                    className="text-gray-400 text-lg leading-loose font-light relative group"
+                  >
+                    <motion.span
+                      className="absolute -left-8 top-0 w-4 h-4 border border-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      whileHover={{ scale: 1.5 }}
+                    />
+                    {text.split(" ").map((word, wordIdx) => {
+                      const highlightWords = ["Jan", "Carlo", "Espiritu,", "Vue.js,", "Nuxt.js,", "TypeScript,"];
+                      const isHighlight = highlightWords.includes(word);
+                      return (
+                        <motion.span
+                          key={wordIdx}
+                          className={
+                            isHighlight ? "text-white font-normal" : ""
+                          }
+                          initial={{ opacity: 0 }}
+                          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                          transition={{
+                            delay: 0.5 + idx * 0.1 + wordIdx * 0.02
+                          }}
+                        >
+                          {word}{" "}
+                        </motion.span>
+                      );
+                    })}
+                  </motion.p>
+                ))}
               </div>
             </motion.div>
 
@@ -66,88 +105,55 @@ export default function About() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-blue-500/50 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                      />
-                    </svg>
+              {[
+                {
+                  num: "01",
+                  title: "Frontend Development",
+                  desc: "Expert in Vue.js, Nuxt.js, TypeScript, Tailwind CSS, and modern JavaScript frameworks"
+                },
+                {
+                  num: "02",
+                  title: "Backend Knowledge",
+                  desc: "Understanding of PHP, Laravel, databases, APIs, and server-side architecture"
+                },
+                {
+                  num: "03",
+                  title: "UI/UX Focus",
+                  desc: "Creating intuitive, accessible, and visually appealing user interfaces"
+                }
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.num}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  }
+                  transition={{ delay: 0.5 + idx * 0.1, duration: 0.6 }}
+                  className="group cursor-default"
+                >
+                  <div className="flex items-start gap-6 p-8 border border-gray-800 hover:border-white transition-all duration-500 relative overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0 bg-white"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    />
+                    <div className="text-4xl relative z-10 group-hover:text-gray-800 transition-colors duration-500">
+                      {item.num}
+                    </div>
+                    <div className="flex-1 relative z-10">
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-gray-800 transition-colors duration-500">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-400 font-light leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">
-                    Frontend Development
-                  </h3>
-                </div>
-                <p className="text-gray-400">
-                  Expert in Vue.js, Nuxt.js, TypeScript, Tailwind CSS, and
-                  modern JavaScript frameworks
-                </p>
-              </div>
-
-              <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">
-                    Backend Knowledge
-                  </h3>
-                </div>
-                <p className="text-gray-400">
-                  Understanding of PHP, Laravel, databases, APIs, and
-                  server-side architecture
-                </p>
-              </div>
-
-              <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-pink-500/50 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">
-                    UI/UX Focus
-                  </h3>
-                </div>
-                <p className="text-gray-400">
-                  Creating intuitive, accessible, and visually appealing user
-                  interfaces
-                </p>
-              </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </motion.div>
