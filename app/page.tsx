@@ -1,5 +1,4 @@
-"use client";
-
+import { Metadata } from "next";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -9,6 +8,12 @@ import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
+
+export const metadata: Metadata = {
+  title: "Jan Carlo Espiritu | Senior Frontend Developer Portfolio",
+  description:
+    "Portfolio of Jan Carlo Espiritu, Senior Frontend Developer specializing in Vue.js, Nuxt.js, React, Next.js, and TypeScript. View my projects and get in touch."
+};
 
 export default function Home() {
   return (
