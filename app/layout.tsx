@@ -132,8 +132,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <meta name="theme-color" content="#000000" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <noscript>
+          <div style={{ padding: '20px', textAlign: 'center' }}>
+            <h1>Jan Carlo Espiritu - Senior Frontend Developer</h1>
+            <p>Experienced Senior Frontend Developer specializing in Vue.js, Nuxt.js, React, Next.js, and TypeScript.</p>
+            <p>Please enable JavaScript to view the full interactive portfolio.</p>
+          </div>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
