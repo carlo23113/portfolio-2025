@@ -141,20 +141,31 @@ export default function Contact() {
               {/* Contact Details */}
               <div className="space-y-6">
                 <div>
-                  <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">Email</div>
-                  <a href="mailto:hello@jancarloespiritu.com" className="text-white text-lg hover:text-gray-400 transition-colors font-light">
-                    hello@jancarloespiritu.com
+                  <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">
+                    Email
+                  </div>
+                  <a
+                    href="mailto:jcespiritu94@gmail.com"
+                    className="text-white text-lg hover:text-gray-400 transition-colors font-light"
+                  >
+                    jcespiritu94@gmail.com
                   </a>
                 </div>
                 <div>
-                  <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">Location</div>
-                  <p className="text-white text-lg font-light">Available for remote work</p>
+                  <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">
+                    Location
+                  </div>
+                  <p className="text-white text-lg font-light">
+                    Available for remote work
+                  </p>
                 </div>
               </div>
 
               {/* Social Links */}
               <div>
-                <div className="text-sm uppercase tracking-wider text-gray-600 mb-4">Connect</div>
+                <div className="text-sm uppercase tracking-wider text-gray-600 mb-4">
+                  Connect
+                </div>
                 <div className="flex gap-6">
                   {socialLinks.map((link) => (
                     <a
@@ -177,13 +188,12 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-8"
-              >
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ delay: 0.5, duration: 0.6 }}
                 >
                   <label
@@ -207,7 +217,9 @@ export default function Contact() {
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ delay: 0.6, duration: 0.6 }}
                 >
                   <label
@@ -231,7 +243,9 @@ export default function Contact() {
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ delay: 0.7, duration: 0.6 }}
                 >
                   <label
@@ -260,7 +274,9 @@ export default function Contact() {
                   whileHover={{ scale: status === "sending" ? 1 : 1.02 }}
                   whileTap={{ scale: status === "sending" ? 1 : 0.98 }}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ delay: 0.8, duration: 0.6 }}
                 >
                   <motion.div
@@ -269,7 +285,7 @@ export default function Contact() {
                     whileHover={{ x: status === "sending" ? "-100%" : 0 }}
                     transition={{ duration: 0.3 }}
                   />
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                  <span className="relative z-10 transition-colors duration-300">
                     {status === "sending"
                       ? "Sending..."
                       : status === "success"
@@ -298,7 +314,8 @@ export default function Contact() {
             className="mt-32 pt-8 border-t border-gray-900"
           >
             <p className="text-gray-600 text-sm font-light">
-              © {new Date().getFullYear()} Jan Carlo Espiritu. All rights reserved.
+              © {new Date().getFullYear()} Jan Carlo Espiritu. All rights
+              reserved.
             </p>
           </motion.div>
         </motion.div>

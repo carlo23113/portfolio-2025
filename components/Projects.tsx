@@ -42,6 +42,15 @@ const projects = [
     icon: "👨‍👧‍👦",
     liveUrl: "https://uaufatherhoodmatters.com/",
     githubUrl: null
+  },
+  {
+    title: "Casa Del Mar Haven",
+    description:
+      "A modern and inviting website designed for a private resort. It showcases the resort's amenities, accommodations, and booking details with a clean, user-friendly interface that highlights the relaxing seaside experience.",
+    tech: ["Nuxt.js", "Vue.js", "TypeScript", "Tailwind"],
+    icon: "🏖️",
+    liveUrl: "https://casa-del-mar-haven.vercel.app/",
+    githubUrl: "https://github.com/carlo23113/casa-del-mar-haven"
   }
 ];
 
@@ -97,7 +106,9 @@ export default function Projects() {
                   <motion.div
                     className="md:col-span-2"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    animate={
+                      isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                    }
                     transition={{ delay: index * 0.1, duration: 0.6 }}
                   >
                     <motion.div
@@ -123,7 +134,9 @@ export default function Projects() {
                   <motion.div
                     className="md:col-span-6"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    animate={
+                      isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                    }
                     transition={{ delay: index * 0.1 + 0.2, duration: 0.6 }}
                   >
                     <motion.h3
@@ -148,8 +161,14 @@ export default function Projects() {
                         <motion.span
                           key={tech}
                           initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                          transition={{ delay: index * 0.1 + 0.4 + techIdx * 0.05 }}
+                          animate={
+                            isInView
+                              ? { opacity: 1, scale: 1 }
+                              : { opacity: 0, scale: 0.8 }
+                          }
+                          transition={{
+                            delay: index * 0.1 + 0.4 + techIdx * 0.05
+                          }}
                           className="text-sm text-gray-500 font-light px-3 py-1 border border-gray-800 rounded-full hover:border-white hover:text-white transition-all duration-300 cursor-default"
                           whileHover={{ scale: 1.1 }}
                         >
